@@ -114,30 +114,38 @@ function generatePassword() {
   return selected;
 }
 function defineParam() {
-  while (typeof numberOfChar !== "number" || numberOfChar < 8 || numberOfChar > 128) {
+  while (
+    typeof numberOfChar !== "number" ||
+    numberOfChar < 8 ||
+    numberOfChar > 128
+  ) {
     numberOfChar = Number(
-      prompt("How many characters should your password be? Minimum 8, Maximum 128.")
+      prompt(
+        "How many characters should your password be? Minimum 8, Maximum 128."
+      )
     );
   }
 
-  if (confirm("Woukd you like to include Numbers?")) {
-    charactersTobeUsed = charactersTobeUsed.concat(numbers);
-  }
+  while (charactersTobeUsed.length === 0) {
+    if (confirm("Woukd you like to include Numbers?")) {
+      charactersTobeUsed = charactersTobeUsed.concat(numbers);
+    }
 
-  if (confirm("Woukd you like to include letters?")) {
-    charactersTobeUsed = charactersTobeUsed.concat(letters);
-  }
+    if (confirm("Woukd you like to include letters?")) {
+      charactersTobeUsed = charactersTobeUsed.concat(letters);
+    }
 
-  if (confirm("Woukd you like to include CAPITAL letters?")) {
-    charactersTobeUsed = charactersTobeUsed.concat(bigLetters);
-  }
-  if (confirm("Woukd you like to include Special Characters?")) {
-    charactersTobeUsed = charactersTobeUsed.concat(specials);
+    if (confirm("Woukd you like to include CAPITAL letters?")) {
+      charactersTobeUsed = charactersTobeUsed.concat(bigLetters);
+    }
+    if (confirm("Woukd you like to include Special Characters?")) {
+      charactersTobeUsed = charactersTobeUsed.concat(specials);
+    }
   }
 
   // console.log(charactersTobeUsed);
 
-  let pass = charactersTobeUsed.join("")
+  let pass = charactersTobeUsed.join("");
   // console.log(pass);
   return pass;
 }
