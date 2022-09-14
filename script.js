@@ -114,9 +114,9 @@ function generatePassword() {
   return selected;
 }
 function defineParam() {
-  while (typeof numberOfChar !== "number") {
+  while (typeof numberOfChar !== "number" || numberOfChar < 8 || numberOfChar > 128) {
     numberOfChar = Number(
-      prompt("How many characters should your password be?")
+      prompt("How many characters should your password be? Minimum 8, Maximum 128.")
     );
   }
 
